@@ -4,6 +4,10 @@
 
 ## flutter for netease cloud music.
 
+## **注意** 项目还处于非常非常初期的阶段
+
+项目不定期更新，随时会有咕咕咕的风险
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
