@@ -52,10 +52,13 @@ class _MusicHomePageState extends State<MusicHomePage>
   int _currentTabIndex = 2;
   final _itemLength = 5;
   TabController _tabController;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(),
       body: TabBarView(
         controller: _tabController,
         children: [
