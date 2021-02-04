@@ -103,7 +103,7 @@ class CloudApi {
       {@required int captcha,
       @required int phone,
       @required String password,
-      @required nickname}) async {
+      @required String nickname}) async {
     return _dio.post('/register/cellphone', queryParameters: {
       'captcha': captcha,
       'phone': phone,
@@ -126,7 +126,7 @@ class CloudApi {
   ///调用此接口 ,可更换绑定手机(流程:先发送验证码到原手机号码,
   ///再发送验证码到新手机号码然后再调用此接口)
   Future<Response> rebind(
-      {@required oldCaptcha,
+      {@required int oldCaptcha,
       @required int captcha,
       @required int phone,
       ctcode = 86}) async {
@@ -178,8 +178,8 @@ class CloudApi {
   ///登录后调用此接口 , 可以更换绑定手机
   Future<Response> userReplacePhone(
       {@required int phone,
-      @required oldCaptcha,
-      @required captcha,
+      @required int oldCaptcha,
+      @required int captcha,
       int countryCode = 86}) async {
     return _dio.get('/user/replacephone', queryParameters: {
       'phone': phone,
