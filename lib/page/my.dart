@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -286,9 +287,15 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
             }
             final direction = _scrollController.position.userScrollDirection;
             if (direction == ScrollDirection.forward && opacity < 0.5) {
-              _appbarAnimationController.reverse();
+              if (_appbarAnimationController.status !=
+                  AnimationStatus.reverse) {
+                _appbarAnimationController.reverse();
+              }
             } else if (direction == ScrollDirection.reverse && opacity > 0.5) {
-              _appbarAnimationController.forward();
+              if (_appbarAnimationController.status !=
+                  AnimationStatus.forward) {
+                _appbarAnimationController.forward();
+              }
             }
             setState(() {});
           });
