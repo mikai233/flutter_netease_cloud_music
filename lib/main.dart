@@ -1,6 +1,8 @@
+import 'package:device_info/device_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_netease_cloud_music/page/my.dart';
 
@@ -135,13 +137,29 @@ class _MusicHomePageState extends State<MusicHomePage>
     _setStatusBarColor();
     _tabController =
         TabController(initialIndex: 2, length: _itemLength, vsync: this);
+    _setOnePlusRefreshRate().catchError(print);
+  }
+
+  Future<void> _setOnePlusRefreshRate() async {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      var androidInfo = await DeviceInfoPlugin().androidInfo;
+      if (androidInfo.brand == 'OnePlus') {
+        var supported = await FlutterDisplayMode.supported;
+        supported
+          ..sort((a, b) => a.height.toInt() - b.height.toInt())
+          ..sort((a, b) => a.refreshRate.toInt() - b.refreshRate.toInt());
+        var current = await FlutterDisplayMode.current;
+        if (current != supported.last) {
+          FlutterDisplayMode.setMode(supported.last);
+        }
+      }
+    }
   }
 
   void _setStatusBarColor() {
     if (defaultTargetPlatform == TargetPlatform.android) {
       SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        // statusBarBrightness: Brightness.dark,
       );
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
