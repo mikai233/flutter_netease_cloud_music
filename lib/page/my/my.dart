@@ -5,6 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_netease_cloud_music/config/app_color.dart';
 import 'package:flutter_netease_cloud_music/config/cloud_over_scroll_behavior.dart';
+import 'file:///D:/Project/AndroidStudioProjects/flutter_netease_cloud_music/lib/page/my/download/dowload.dart';
+import 'package:flutter_netease_cloud_music/utils/utils.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -122,7 +124,9 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                       child: Row(
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              pushPage(context, DownloadPage());
+                            },
                             child: Column(
                               children: [
                                 Icon(Icons.music_note_rounded),

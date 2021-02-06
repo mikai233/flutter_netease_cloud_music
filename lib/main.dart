@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_netease_cloud_music/page/my.dart';
+import 'file:///D:/Project/AndroidStudioProjects/flutter_netease_cloud_music/lib/page/my/my.dart';
 
 void main() {
   runApp(CloudMusicApp());
