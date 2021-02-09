@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_netease_cloud_music/config/app_color.dart';
 import 'package:flutter_netease_cloud_music/config/cloud_over_scroll_behavior.dart';
-import 'file:///D:/Project/AndroidStudioProjects/flutter_netease_cloud_music/lib/page/my/download/dowload.dart';
+import 'package:flutter_netease_cloud_music/page/my/download/dowload.dart';
 import 'package:flutter_netease_cloud_music/utils/utils.dart';
 
 class MyPage extends StatefulWidget {
@@ -235,49 +235,55 @@ class _MyPageState extends State<MyPage> with TickerProviderStateMixin {
                   borderRadius: BorderRadius.circular(10),
                   color: AppColor.foregroundColor,
                 ),
-                child: Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black),
-                      child: FlutterLogo(
-                        size: 60,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text('我喜欢的音乐'),
+                child: InkWell(
+                  onTap: () {
+                    print('tapa');
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.black),
+                        child: FlutterLogo(
+                          size: 60,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text(
-                            '10008首',
-                            style: TextStyle(color: Colors.grey, fontSize: 10),
+                      ),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text('我喜欢的音乐'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Text(
+                              '10008首',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 10),
+                            ),
+                          ),
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      Spacer(),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(999),
                           ),
                         ),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                    Spacer(),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(999),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.headset_rounded),
+                            Text('心动模式'),
+                          ],
                         ),
                       ),
-                      onPressed: () {},
-                      child: Row(
-                        children: [
-                          Icon(Icons.headset_rounded),
-                          Text('心动模式'),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

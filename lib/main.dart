@@ -136,7 +136,14 @@ class _MusicHomePageState extends State<MusicHomePage>
     super.initState();
     _setStatusBarColor();
     _tabController =
-        TabController(initialIndex: 2, length: _itemLength, vsync: this);
+        TabController(initialIndex: 2, length: _itemLength, vsync: this)
+          ..addListener(() {
+            if (_currentTabIndex != _tabController.index) {
+              setState(() {
+                _currentTabIndex = _tabController.index;
+              });
+            }
+          });
     _setOnePlusRefreshRate().catchError(print);
   }
 
